@@ -1,0 +1,27 @@
+{
+  "name": "big-picture",
+  "version": "1.0.0",
+  "description": "Transforming complex business subjects into engaging, narrative-driven, and visual learning experiences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunenaB3504/commerce-big-picture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SunenaB3504/commerce-big-picture/issues"
+  },
+  "homepage": "https://github.com/SunenaB3504/commerce-big-picture#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.0.6"
+  }
+}

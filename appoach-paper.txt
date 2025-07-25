@@ -1,0 +1,24 @@
+Approach Paper: KnowledgeCompass
+1. Vision & Core Mission
+Vision: To transform the way complex educational subjects are learned by making them intuitive, engaging, and deeply memorable.
+Mission: KnowledgeCompass aims to solve the problem of passive and fragmented learning, particularly in dense subjects like Business Studies, Accounting, and Economics. Traditional textbook learning often fails to show the interconnectedness of concepts and can be dry and unengaging. Our mission is to create an immersive learning ecosystem that combines narrative and visual exploration
+Target Audience: The primary audience is high school students (specifically those following curricula like the CBSE in India), but the application is designed to be valuable for any self-learner, university student, or individual seeking to grasp fundamental business principles.
+2. The Four Pillars of Our Educational Approach
+Our strategy is built on four core pillars designed to cater to different learning styles and create a holistic educational experience.
+Narrative-Driven Learning: We believe story is the most powerful vehicle for knowledge. Abstract concepts are woven into a compelling narrative following two young entrepreneurs, Neil and Kanishq. As they build their company, they encounter real-world challenges that are solved by applying the very principles the user is learning. This contextualizes knowledge, making it relatable and easier to recall than isolated definitions.
+Visual & Spatial Organization: The interactive mind map is the central nervous system of the application. It serves two purposes:
+Navigation: It provides a clear, explorable interface to the curriculum.
+Conceptualization: More importantly, it visually represents the relationships between different topics. Users can see how a concept in Accounting connects to a principle in Business Studies, building a mental "compass" of the subject matter. This caters to visual learners and reinforces the interconnected nature of the domain.
+Multi-Sensory Engagement: To enhance accessibility and cater to auditory learners, every story segment includes high-quality audio narration. By using distinct voices for each character (Neil, Kanishq, Narrator), the lessons are transformed into an engaging audio-drama. This allows for both active "lean-forward" reading and passive "lean-back" listening, increasing the ways a user can consume the content.
+3. Technical Architecture & Design Choices
+Our technical philosophy prioritizes simplicity, performance, and a modern user experience.
+Technology Stack:
+Frontend: HTML, css and JS. High modularization. Seperate files for featues and functions.
+Styling: TailwindCSS. A utility-first CSS framework enables us to rapidly build a custom, visually consistent design without writing extensive, bespoke CSS. This accelerates development and ensures a clean, modern aesthetic.
+ 
+Data Flow: The application follows a standard uni-directional data flow. State is managed in top-level components (like App) and passed down to child components via props. Callbacks (onSelectNode, onClose) are used to communicate events from children back up to parents. This creates a predictable and easy-to-debug application structure.
+Gemini API Integration Strategy:
+4. UI/UX Philosophy
+Our user interface and experience design are guided by three key principles:
+Clarity and Focus: The dark-themed, minimalist UI is designed to reduce cognitive load and eye strain, keeping the user's attention squarely on the educational content.
+Intuitive Interaction: Actions like panning the mind map, clicking nodes, and using the media player are designed to be immediately understandable with no learning curve. Clear visual cues, such as hover effects and button states, guide the user's interaction.
