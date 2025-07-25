@@ -1,2 +1,6 @@
 // Entry point for KnowledgeCompass
-console.log('KnowledgeCompass app loaded');
+import App from './App.js';
+
+const root = document.getElementById('app');
+root.innerHTML = '';
+root.appendChild(App());
