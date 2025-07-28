@@ -1,0 +1,310 @@
+KnowledgeCompass - Technical Specification Document
+1. Project Overview
+1.1 Product Vision
+Transform complex educational subjects into intuitive, engaging, and deeply memorable learning experiences through narrative-driven, visually organized content.
+
+1.2 Core Mission
+Solve passive and fragmented learning in dense subjects (Business Studies, Accounting, Economics) by creating an immersive learning ecosystem that combines narrative storytelling with visual exploration.
+
+1.3 Target Audience
+Primary: High school students (CBSE curriculum, India)
+Secondary: Self-learners, university students, individuals learning business fundamentals
+Age Range: 15-25 years
+Learning Context: Both structured classroom support and independent study
+2. Functional Requirements
+2.1 Core Features
+2.1.1 Interactive Mind Map System
+Purpose: Central navigation and conceptual visualization system
+Requirements:
+Zoomable and pannable interface
+Node-based topic organization
+Visual connection lines between related concepts
+Hover effects and selection states
+Topic categorization by subject (Business Studies, Accounting, Economics)
+Progressive disclosure of subtopics
+Search and filter functionality
+Bookmark/favorites system for nodes
+2.1.2 Narrative Learning Engine
+Characters: Neil and Kanishq (young entrepreneurs)
+Story Structure: Sequential chapters following business development journey
+Requirements:
+Chapter-based content organization
+Character dialogue system
+Real-world scenario integration
+Concept application within story context
+Progress tracking through narrative
+Chapter summaries and key takeaways
+2.1.3 Multi-Media Content System
+Audio Narration:
+Distinct voice actors for Neil, Kanishq, and Narrator
+High-quality audio production (minimum 44.1kHz, 16-bit)
+Audio player controls (play, pause, skip, speed control)
+Synchronized text highlighting during narration
+Offline audio caching capability
+Visual Elements:
+Concept illustrations and diagrams
+Character avatars and expressions
+Infographics for complex data
+Interactive charts and graphs
+2.1.4 Learning Assessment System
+Progress Tracking:
+Node completion status
+Time spent on each topic
+Learning path visualization
+Achievement badges and milestones
+Knowledge Validation:
+Contextual quizzes within story segments
+Concept application exercises
+Cross-topic relationship questions
+Performance analytics and insights
+2.2 User Interface Requirements
+2.2.1 Layout Structure
+Main Interface Components:
+Interactive mind map (primary view)
+Content panel (story/lesson display)
+Audio player controls
+Navigation breadcrumbs
+Progress indicator
+Settings and user profile access
+2.2.2 Design Specifications
+Theme: Dark mode primary, light mode optional
+Color Palette:
+Background: Deep blues/grays (#1a1a2e, #16213e)
+Accent: Vibrant blues/teals (#0f4c75, #3282b8)
+Text: High contrast whites/light grays
+Node colors: Subject-specific color coding
+Typography:
+Primary: Modern sans-serif (Inter, Poppins, or similar)
+Hierarchy: Clear heading structure (H1-H6)
+Readability: Minimum 16px body text, 1.6 line height
+Responsive Design: Mobile-first approach with breakpoints at 768px, 1024px, 1440px
+3. Technical Specifications
+3.1 Technology Stack
+3.1.1 Frontend Architecture
+Core Technologies: HTML5, CSS3, ES6+ JavaScript
+Styling Framework: TailwindCSS
+Module System: ES6 modules with separate files for features
+State Management: Centralized state in main App component
+Data Flow: Unidirectional props down, callbacks up
+3.1.2 File Structure
+src/
+├── components/
+│   ├── MindMap/
+│   │   ├── MindMap.js
+│   │   ├── Node.js
+│   │   └── Connection.js
+│   ├── Content/
+│   │   ├── StoryViewer.js
+│   │   ├── AudioPlayer.js
+│   │   └── ProgressTracker.js
+│   └── UI/
+│       ├── Navigation.js
+│       ├── Sidebar.js
+│       └── Modal.js
+├── data/
+│   ├── curriculum.json
+│   ├── stories.json
+│   └── audio-manifest.json
+├── assets/
+│   ├── audio/
+│   ├── images/
+│   └── icons/
+├── utils/
+│   ├── api.js
+│   ├── storage.js
+│   └── helpers.js
+└── app.js
+3.2 Data Architecture
+3.2.1 Content Data Models
+// Mind Map Node Structure
+{
+  id: "unique-node-id",
+  title: "Node Title",
+  subject: "business-studies|accounting|economics",
+  level: 1, // curriculum level
+  position: { x: 100, y: 200 },
+  connections: ["connected-node-id"],
+  content: {
+    storySegments: ["story-id-1", "story-id-2"],
+    concepts: ["concept-id-1"],
+    assessments: ["quiz-id-1"]
+  },
+  prerequisites: ["prerequisite-node-id"],
+  status: "locked|available|in-progress|completed"
+}
+
+// Story Content Structure
+{
+  id: "story-segment-id",
+  chapter: 1,
+  scene: 1,
+  characters: ["neil", "kanishq", "narrator"],
+  content: {
+    text: "Story text content...",
+    audioFile: "audio/chapter1-scene1.mp3",
+    duration: 180, // seconds
+    concepts: ["concept-id-1", "concept-id-2"]
+  },
+  nextSegment: "next-story-id",
+  previousSegment: "prev-story-id"
+}
+3.2.2 User Progress Model
+{
+  userId: "user-identifier",
+  currentNode: "active-node-id",
+  completedNodes: ["node-id-1", "node-id-2"],
+  timeSpent: {
+    "node-id-1": 1800, // seconds
+    "node-id-2": 2400
+  },
+  assessmentScores: {
+    "quiz-id-1": { score: 85, attempts: 2, completed: true }
+  },
+  preferences: {
+    audioSpeed: 1.0,
+    theme: "dark",
+    notifications: true
+  }
+}
+3.3 API Integration Strategy
+3.3.1 Gemini API Integration
+Purpose: Enhanced content generation and personalized learning paths
+Implementation:
+Content adaptation based on user progress
+Dynamic question generation
+Concept explanation customization
+Learning difficulty adjustment
+Endpoints:
+/api/generate-explanation - Custom concept explanations
+/api/suggest-path - Personalized learning recommendations
+/api/generate-assessment - Dynamic quiz creation
+3.4 Performance Requirements
+3.4.1 Loading Performance
+Initial Load: < 3 seconds on 3G connection
+Mind Map Rendering: < 1 second for 100+ nodes
+Audio Preloading: Next segment preloaded during current playback
+Image Optimization: WebP format with fallbacks, lazy loading
+3.4.2 Interaction Performance
+Mind Map Navigation: 60fps smooth animations
+Audio Playback: < 500ms start time
+Content Switching: < 200ms transition between nodes
+Search Response: < 100ms for local search
+4. User Experience Specifications
+4.1 User Journey Flow
+4.1.1 Onboarding Experience
+Welcome screen with vision explanation
+Learning style assessment (visual/auditory/reading preference)
+Curriculum selection and goal setting
+Interactive mind map tutorial
+First story segment introduction
+4.1.2 Core Learning Flow
+Mind map exploration and node selection
+Story segment consumption (read/listen)
+Concept reinforcement activities
+Progress checkpoint and reflection
+Next topic recommendation
+4.2 Accessibility Requirements
+4.2.1 Technical Accessibility
+WCAG 2.1 AA Compliance
+Keyboard Navigation: Full functionality without mouse
+Screen Reader Support: Proper ARIA labels and semantic HTML
+Color Contrast: Minimum 4.5:1 ratio for text
+Font Scaling: Support up to 200% zoom without horizontal scrolling
+4.2.2 Learning Accessibility
+Multiple Learning Modalities: Visual, auditory, and textual content
+Adjustable Playback Speed: 0.5x to 2x audio speed
+Text Size Controls: User-selectable font sizes
+Content Complexity: Progressive difficulty levels
+5. Content Specifications
+5.1 Curriculum Coverage
+5.1.1 Business Studies Topics
+Business fundamentals and entrepreneurship
+Marketing principles and strategies
+Human resource management
+Financial management basics
+Business ethics and social responsibility
+5.1.2 Accounting Principles
+Double-entry bookkeeping
+Financial statements preparation
+Cost accounting fundamentals
+Budgeting and financial planning
+Audit and compliance basics
+5.1.3 Economics Concepts
+Microeconomic principles
+Market structures and competition
+Macroeconomic indicators
+International trade basics
+Economic policy and regulation
+5.2 Story Integration Requirements
+5.2.1 Character Development
+Neil: Tech-savvy, analytical, accounting-focused
+Kanishq: Creative, people-oriented, marketing-focused
+Character Arc: Business growth from startup to established company
+Personality Consistency: Maintained across all story segments
+5.2.2 Scenario Authenticity
+Real-world business challenges and solutions
+Current market examples and case studies
+Practical application of theoretical concepts
+Cultural relevance to Indian business context
+6. Testing and Quality Assurance
+6.1 Testing Strategy
+6.1.1 Functional Testing
+Mind map navigation and interaction
+Audio playback across different browsers
+Content loading and caching
+User progress persistence
+Cross-browser compatibility (Chrome, Firefox, Safari, Edge)
+6.1.2 User Experience Testing
+Learning effectiveness measurement
+User engagement metrics
+Content comprehension assessment
+Navigation intuitiveness evaluation
+6.2 Performance Testing
+Load testing with concurrent users
+Audio streaming performance
+Memory usage optimization
+Mobile device performance validation
+7. Security and Privacy
+7.1 Data Protection
+User progress data encryption
+Local storage for sensitive information
+GDPR compliance for international users
+Minimal data collection principle
+7.2 Content Security
+Asset protection and watermarking
+API rate limiting and authentication
+Secure content delivery network usage
+8. Deployment and Maintenance
+8.1 Deployment Strategy
+Progressive web app (PWA) capabilities
+Content delivery network (CDN) for assets
+Automated testing and deployment pipeline
+Version control and rollback capabilities
+8.2 Maintenance Plan
+Regular content updates and additions
+Performance monitoring and optimization
+User feedback integration and improvements
+Bug fix and security update procedures
+9. Success Metrics
+9.1 Learning Effectiveness
+Concept retention rate (measured through spaced repetition testing)
+Time to competency improvement
+User engagement duration and frequency
+Assessment score improvements
+9.2 User Experience Metrics
+User session duration and return rate
+Feature utilization rates
+User satisfaction scores
+Content completion rates
+10. Future Enhancements
+10.1 Planned Features
+Collaborative learning tools
+Instructor dashboard and analytics
+Advanced AI-powered personalization
+Multi-language support
+Mobile application development
+10.2 Scalability Considerations
+Modular architecture for easy feature addition
+Database optimization for large user bases
+Content management system for educators
+API extensibility for third-party integrations

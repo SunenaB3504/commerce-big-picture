@@ -1,0 +1,14 @@
+{
+  "id": "story-1-1",
+  "chapter": 1,
+  "scene": 1,
+  "characters": ["neil", "kanishq", "narrator"],
+  "content": {
+    "text": "Neil and Kanishq start their business journey, learning the basics of entrepreneurship.",
+    "audioFile": "audio/chapter1-scene1.mp3",
+    "duration": 180,
+    "concepts": ["concept-1"]
+  },
+  "nextSegment": null,
+  "previousSegment": null
+}

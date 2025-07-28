@@ -1,0 +1,17 @@
+[
+  {
+    "id": "node-1",
+    "title": "Business Fundamentals",
+    "subject": "business-studies",
+    "level": 1,
+    "position": { "x": 100, "y": 200 },
+    "connections": [],
+    "content": {
+      "storySegments": ["story-1-1"],
+      "concepts": ["concept-1"],
+      "assessments": ["quiz-1"]
+    },
+    "prerequisites": [],
+    "status": "available"
+  }
+]

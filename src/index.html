@@ -12,6 +12,11 @@
     <p class="mb-2">Transforming complex business subjects into engaging, narrative-driven, and visual learning experiences.</p>
     <p class="text-sm text-gray-400">Start building your app in <code>src/</code></p>
   </div>
-  <script type="module" src="./App.js"></script>
+  <script type="module">
+    import App from './App.js';
+    const root = document.getElementById('app');
+    root.innerHTML = '';
+    root.appendChild(App());
+  </script>
 </body>
 </html>
